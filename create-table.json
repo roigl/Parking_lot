@@ -1,0 +1,15 @@
+{
+    "TableName": "parking_logs",
+    "KeySchema": [
+      { "AttributeName": "parking_lot_id", "KeyType": "S" },
+      { "AttributeName": "ticket_id", "KeyType": "S" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "plate_id", "AttributeType": "S" },
+      { "AttributeName": "entry_time", "AttributeType": "S" }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 5,
+      "WriteCapacityUnits": 5
+    }
+}

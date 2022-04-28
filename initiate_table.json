@@ -1,0 +1,23 @@
+{
+  "parking_logs": [
+    {
+      "PutRequest": {
+        "Item":
+        {
+          "parking_lot_id": {
+            "S": "0"
+          },
+          "ticket_id": {
+            "S": "0"
+          },
+          "plate_id": {
+            "S": "0"
+          },
+          "entry_time": {
+            "S": "00/00/00 00:00:00"
+          }
+        }
+      }
+    }
+  ]
+}
