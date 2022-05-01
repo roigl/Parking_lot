@@ -54,7 +54,11 @@ PUBLIC_IP=$(aws ec2 describe-instances  --instance-ids $INSTANCE_ID |
 echo "New instance $INSTANCE_ID @ $PUBLIC_IP"
 
 echo "deploying code to production"
-git -i $KEY_PEM -o clone https://github.com/roigl/parking_lot ubuntu@$PUBLIC_IP:/home/ubuntu/
+sudo apt-get install git
+mkdir ~/deploy_parking 
+cd  ~/deploy_parking 
+git clone https://github.com/roigl/parking_lot
+scp -i $KEY_PEM -o "StrictHostKeyChecking=no" -o "ConnectionAttempts=60"  ~/deploy_parking/parking_lot  ubuntu@$PUBLIC_IP:/home/ubuntu/
 
 aws dynamodb create-table --cli-input-json create-table.json
 aws dynamodb batch-write-item --request-items initiate_table.json
