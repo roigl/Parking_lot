@@ -3,13 +3,10 @@ from datetime import datetime
 
 
 def ticket_id_generator():
-    client = boto3.client('dynamodb', region_name='us-east-1')
-    table = client.scan(TableName='parking_logs')
-    ids=[]
-    for item in table['Items']:
-        ids= ids + [int(item['ticket_id']['S'])]
+    now = datetime.now()
+    current_time = now.strftime("%d%m%y%H%M%S")
 
-    return str(max(ids)+1)
+    return current_time
 
 def check_if_exist(plate_id,parking_lot_id):
 
